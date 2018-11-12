@@ -62,7 +62,12 @@ end
 %                                                                        %
 % --- Executes on button press in Load_River_Input.                      %
 function Load_River_Input_Callback(hObject,eventdata, handles)
-delete('./results/FluEgg_LogFile.txt')
+if ~exist('results','dir')
+    mkdir('results')
+end
+if exist('FluEgg_LogFile.txt','file')
+ delete('./results/FluEgg_LogFile.txt')
+end
 try
     diary('./results/FluEgg_LogFile.txt')
 catch
